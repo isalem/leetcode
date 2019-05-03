@@ -1,11 +1,10 @@
 /// # [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)
 ///
-/// You are given two non-empty linked lists representing two non-negative
-/// integers. The digits are stored in reverse order and each of their nodes
-/// contain a single digit. Add the two numbers and return it as a linked list.
+/// You are given two non-empty linked lists representing two non-negative integers. The digits
+/// are stored in reverse order and each of their nodes contain a single digit. Add the two
+/// numbers and return it as a linked list.
 ///
-/// You may assume the two numbers do not contain any leading zero, except
-/// the number 0 itself.
+/// You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 mod add_two_numbers {
     struct Solution;
 
@@ -40,25 +39,19 @@ mod add_two_numbers {
                 (Some(d1), Some(d2)) => {
                     let (div, rem) = Solution::div_rem(d1.val + d2.val + div);
                     let mut result = Box::new(ListNode::new(rem));
-                    result.next = Solution::add_two_numbers_with_div(
-                        &d1.next, &d2.next, div,
-                    );
+                    result.next = Solution::add_two_numbers_with_div(&d1.next, &d2.next, div);
                     Some(result)
                 }
                 (None, Some(d2)) => {
                     let (div, rem) = Solution::div_rem(d2.val + div);
                     let mut result = Box::new(ListNode::new(rem));
-                    result.next = Solution::add_two_numbers_with_div(
-                        &None, &d2.next, div,
-                    );
+                    result.next = Solution::add_two_numbers_with_div(&None, &d2.next, div);
                     Some(result)
                 }
                 (Some(d1), None) => {
                     let (div, rem) = Solution::div_rem(d1.val + div);
                     let mut result = Box::new(ListNode::new(rem));
-                    result.next = Solution::add_two_numbers_with_div(
-                        &d1.next, &None, div,
-                    );
+                    result.next = Solution::add_two_numbers_with_div(&d1.next, &None, div);
                     Some(result)
                 }
                 (None, None) => {
